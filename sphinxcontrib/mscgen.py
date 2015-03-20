@@ -122,7 +122,7 @@ def render_msc(self, code, format, prefix='mscgen'):
     hashkey = str(code.encode('utf-8')) + str(self.builder.config.mscgen_args)
     id = sha(bytes(hashkey, 'utf-8')).hexdigest()
     fname = '%s-%s.%s' % (prefix, id, format)
-    if hasattr(self.builder, 'imgpath'):
+    if hasattr(self.builder, 'imgpath') and self.builder.imgpath:
         # HTML
         relfn = posixpath.join(self.builder.imgpath, fname)
         outfn = path.join(self.builder.outdir, '_images', fname)
