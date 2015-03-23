@@ -203,7 +203,11 @@ def render_msc_latex(self, node, code, prefix='mscgen'):
         raise nodes.SkipNode
 
     if fname is not None:
-        self.body.append('\n\\includegraphics[]{%s}\n' % fname)
+        self.body.append('''
+\\begin{center}
+    \\includegraphics[]{%s}
+\\end{center}
+        ''' % fname)
     raise nodes.SkipNode
 
 

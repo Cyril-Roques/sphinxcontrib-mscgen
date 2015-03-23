@@ -29,7 +29,7 @@ requires = ['Sphinx>=0.6']
 
 setup(
     name='sphinxcontrib-mscgen',
-    version='0.4.1-rv1',
+    version='0.4.2',
     url='https://github.com/alfred82santa/sphinxcontrib-mscgen',
     download_url='https://github.com/alfred82santa/sphinxcontrib-mscgen',
     license='BOLA',
