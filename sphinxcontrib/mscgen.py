@@ -150,7 +150,7 @@ def render_msc(self, code, format, prefix='mscgen'):
 
     mscgen_args = [self.builder.config.mscgen]
     mscgen_args.extend(self.builder.config.mscgen_args)
-    mscgen_args.extend(['-T', format, '-o', tmpfn])
+    mscgen_args.extend(['-T', format, '-o', tmpfn, '-S', 'signalling'])
     if not run_cmd(self.builder, mscgen_args, 'mscgen', 'mscgen', code):
         return None, None, None
 
@@ -176,7 +176,7 @@ def render_msc_html(self, node, code, prefix='mscgen', imgcls=None):
     if fname is None:
         self.body.append(self.encode(code))
     else:
-        imgmap = get_map_code(outfn + '.map', id)
+        imgmap = False # get_map_code(outfn + '.map', id)
         imgcss = imgcls and 'class="%s"' % imgcls or ''
         if not imgmap:
             # nothing in image map
