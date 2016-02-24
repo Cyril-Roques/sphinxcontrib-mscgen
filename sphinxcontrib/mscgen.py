@@ -72,6 +72,7 @@ class MscgenSimple(Directive):
 def run_cmd(builder, cmd, cmd_name, cfg_name, stdin=''):
     try:
         try:
+            print(cmd)
             p = Popen(cmd, stdout=PIPE, stdin=PIPE, stderr=PIPE)
         except OSError as err:
             # workaround for missing shebang of epstopdf script
