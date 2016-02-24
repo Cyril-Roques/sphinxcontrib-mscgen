@@ -72,7 +72,6 @@ class MscgenSimple(Directive):
 def run_cmd(builder, cmd, cmd_name, cfg_name, stdin=''):
     try:
         try:
-            print(cmd)
             p = Popen(cmd, stdout=PIPE, stdin=PIPE, stderr=PIPE)
         except OSError as err:
             # workaround for missing shebang of epstopdf script
@@ -155,13 +154,13 @@ def render_msc(self, code, format, prefix='mscgen'):
     if not run_cmd(self.builder, mscgen_args, 'mscgen', 'mscgen', code):
         return None, None, None
 
-    if format == 'png':
-        mscgen_args = mscgen_args[:-4] + ['-T', 'ismap', '-o', mapfn]
-        if not run_cmd(self.builder, mscgen_args, 'mscgen', 'mscgen', code):
-            return None, None, None
-    else:  # PDF/EPS
-        if not eps_to_pdf(self.builder, tmpfn, outfn):
-            return None, None, None
+    # if format == 'png':
+    #     mscgen_args = mscgen_args[:-4] + ['-T', 'ismap', '-o', mapfn]
+    #     if not run_cmd(self.builder, mscgen_args, 'mscgen', 'mscgen', code):
+    #         return None, None, None
+    # else:  # PDF/EPS
+    #    if not eps_to_pdf(self.builder, tmpfn, outfn):
+    #        return None, None, None
 
     return relfn, outfn, id
 
